@@ -3,14 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://shravandoda.github.io/about/</loc>
-    <lastmod>2019-06-14T01:37:21+05:30</lastmod>
+    <loc>https://shravandoda.github.io/posts/getting-started-with-git/</loc>
+    <lastmod>2019-06-14T15:56:09+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shravandoda.github.io/posts/</loc>
+    <lastmod>2019-06-14T15:56:09+05:30</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://shravandoda.github.io/</loc>
-    <lastmod>2019-06-14T01:37:21+05:30</lastmod>
+    <lastmod>2019-06-14T15:56:09+05:30</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://shravandoda.github.io/about/</loc>
+    <lastmod>2019-06-14T01:37:21+05:30</lastmod>
   </url>
   
   <url>
