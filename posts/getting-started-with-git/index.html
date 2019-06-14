@@ -107,7 +107,7 @@ What is a VCS? VCS stands for Version Control System." />
             </span>
             <span class="reading-time">
               <i class="fas fa-clock"></i>
-              3 minutes read
+              6 minutes read
             </span>
           </div>
           
@@ -128,7 +128,7 @@ What is a VCS? VCS stands for Version Control System." />
 
 <p>Git is a type of distributed VCS. It was created by Linus Torvalds in 2005. Developers use Git to keep a track of all the stages that the project goes through to attain it&rsquo;s current state. It&rsquo;s one of the most powerful VCS out there with tons of different features. So how does one get started with Git. Well the first step will be to install Git on your system. For this particular tutorial I&rsquo;ll be using <a href="https://git-school.github.io/visualizing-git/">visualize-git</a>. I suggest you do the same and follow along. I find in particularly useful for learning purposes because it removes all the hassle of installing Git on your system and moreover you&rsquo;ll be able to visualize your whole work flow.</p>
 
-<h5 id="commit-early-commit-often">Commit early, commit often</h5>
+<h5 id="commited-for-life">Commited for life!</h5>
 
 <p>A commit in a Git repository records a snapshot of all the files in your directory. Whenever you commit changes in a Git repository, Git stores all the changes you&rsquo;ve made and stores them as a commit. It doesn&rsquo;t just blindly copy the entire directory but is very smart about keeping track of the set of changes you make. It also maintains a hierarchy of all the commits you make i.e. each commit will have a parent commit. This way you can keep track of the history of changes you&rsquo;ve made.</p>
 
@@ -140,9 +140,56 @@ What is a VCS? VCS stands for Version Control System." />
 
 <p>Commiting any staged chages in Git is done using the command (try it on visualize-git)</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git commit -m <span style="color:#0ff;font-weight:bold">&#34;YOUR COMMIT MESSAGE HERE&#34;</span></code></pre></div>
-<p>Whenever you commit, I suggest you provide a meaningful message to describe all the changes that have been done in the commit. This will help you when you go back through history of commits. After commiting here is what your workspace on visualize-git should look like -
-<br />
-<center><img src="https://shravandoda.github.io/images/git-tutorial/first-commit.png"/><center></p>
+<p>Whenever you commit, I suggest you provide a meaningful message to describe all the changes that have been done in the commit. This will help you when you go back through history of commits. After commiting here is what your workspace on visualize-git should look like -</p>
+
+<p><img src="https://shravandoda.github.io/images/git-tutorial/first-commit.png" alt="" /></p>
+
+<h5 id="branch-early-branch-often">Branch early, branch often!</h5>
+
+<p>Branches in Git are simply pointers to a specific commit. What a branch essentially means is &ldquo;I want to include the work of this commit and all parent commits&rdquo;. There is not much storage overhead attached to branches in Git. Hence you can branch as often as you like to keep your work flow clean and organised.
+<strong>PS:</strong> Whenever you&rsquo;re working on an issue or a feature, it is recommended that you create a new branch and work from there. It keeps your work flow clean and avoids future hassles.</p>
+
+<p>In order to create a new branch in Git, type the following command on your visualize-git interface -</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git branch newFeature</code></pre></div>
+<p>After you type in the above command you&rsquo;ll see that a new pointer appears below your last commit.</p>
+
+<p><img src="https://shravandoda.github.io/images/git-tutorial/newFeature.png" alt="" /></p>
+
+<p>But right now you&rsquo;re not checked out on that branch. Any commit you make will move the master branch forward and the not the newFeature branch. In order to select the newFeature branch type the following -</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git checkout newFeature</code></pre></div>
+<p>After you checkout, you&rsquo;ll notice that the HEAD label on the top right changes it&rsquo;s value to newFeature. This means that anychanges made will be added to newFeature branch now.<br />
+<strong>PS:</strong> HEAD is also a pointer to a commit. It&rsquo;s the pointer to the commit that you&rsquo;re currently working on. The above command basically sets the value of HEAD pointer from master to newFeature.</p>
+
+<p><img src="https://shravandoda.github.io/images/git-tutorial/checkoutnewFeature.png" alt="" /></p>
+
+<p>If you try and commit any change now, you&rsquo;ll see that the newFeature branch moves forward while the master branch still points to the last commit.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git commit -m <span style="color:#0ff;font-weight:bold">&#34;New Commit&#34;</span></code></pre></div>
+<p><img src="https://shravandoda.github.io/images/git-tutorial/commitnewFeature.png" alt="" /></p>
+
+<p>Now let&rsquo;s set the HEAD back to master branch and commit again to see what happens.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git checkout master
+git commit -m <span style="color:#0ff;font-weight:bold">&#34;New commit to master branch&#34;</span></code></pre></div>
+<p><img src="https://shravandoda.github.io/images/git-tutorial/commitnewMaster.png" alt="" />
+As you can see, the two branches start to diverge. This explains the basic concept behind branches. Now each branch can be used to develop a new feature which can later be included in the final branch used for releasing the the code.</p>
+
+<h5 id="merging-and-rebasing">Merging and Rebasing</h5>
+
+<p>Before proeceeding further I&rsquo;d like you to set up your workspace by cleaning the above space and creating some commits. I hope you&rsquo;ll be able to reach this point by the reading material above. We&rsquo;ll use this sample workspace to understand the concepts of Merging and Rebasing.</p>
+
+<p><img src="https://shravandoda.github.io/images/git-tutorial/premerging.png" alt="" /></p>
+
+<p>We&rsquo;ll start with Merging. As you&rsquo;ve seen above branches are really helpful to organise the work flow. But how would one include the commits from one branch into another. The answer is merging. In order to get a visual idea of what I&rsquo;m talking about checkout to the master branch and type the following -</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git merge newFeature</code></pre></div>
+<p><img src="https://shravandoda.github.io/images/git-tutorial/aftermerging.png" alt="" /></p>
+
+<p>Do you see a new commit? Notice that it has two parents instead of one. Basically this commit includes the changes from both the branches. However you should be aware that if changes in the commits of these branches conflict, Git will throw an error. For example, if last commit from master branch tries to change something and the last commit from newFeature branch tries to change the same code, Git will see it as a conflict and throw an error.</p>
+
+<p>While merging adds a new commit with a parent from each of the branch, rebasing on the other hand takes a set commits and shifts them to a different posistion. Rebasing is used to arrange the commits from different branches in a nice linear fashion. If you feel confused, take a look at the image below.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git checkout sampleBranch
+git rebase master</code></pre></div>
+<p><img src="https://shravandoda.github.io/images/git-tutorial/afterrebasing.png" alt="" /></p>
+
+<p>What essentially happened was that all the distinct commits from sampleBranch were copied and based onto the master branch. Just like merging always be aware that conflicting commits will throw an error while rebasing as well.</p>
 
       </div>
 
