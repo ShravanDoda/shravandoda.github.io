@@ -107,7 +107,7 @@ What is a VCS? VCS stands for Version Control System." />
             </span>
             <span class="reading-time">
               <i class="fas fa-clock"></i>
-              6 minutes read
+              7 minutes read
             </span>
           </div>
           
@@ -190,6 +190,30 @@ git rebase master</code></pre></div>
 <p><img src="https://shravandoda.github.io/images/git-tutorial/afterrebasing.png" alt="" /></p>
 
 <p>What essentially happened was that all the distinct commits from sampleBranch were copied and based onto the master branch. Just like merging always be aware that conflicting commits will throw an error while rebasing as well.</p>
+
+<h5 id="moving-between-commits">Moving between commits</h5>
+
+<p>In order to move between the commits i.e. to change the value of the HEAD pointer, we use the checkout command. What basically happens when you use the checkout commandis that the HEAD pointer is set to the value you provide. Apart from branch names, value of a pointer can be set relative to a known pointer as well. There are 2 methods for this - the caret (&ldquo;^&rdquo;) variable and the tilde (&rdquo;~&ldquo;) variable. The caret (&rdquo;^&ldquo;) points to the parent of a given pointer. Let&rsquo;s try it out on a new workspace. Create the below workspace for the upcoming examples -</p>
+
+<p><img src="https://shravandoda.github.io/images/git-tutorial/newworkspace.png" alt="" /></p>
+
+<p>Now what if one wanted to move the HEAD to one commit behind. Here&rsquo;s how you do that -</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git checkout HEAD^</code></pre></div>
+<p><img src="https://shravandoda.github.io/images/git-tutorial/caretexample.png" alt="" /></p>
+
+<p>You can also use caret multiple times -</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git checkout HEAD^^^</code></pre></div>
+<p><img src="https://shravandoda.github.io/images/git-tutorial/caretexample2.png" alt="" /></p>
+
+<p>Caret is good for referring to parent pointers one at a time. But what if you wanted to jump more than one commits in one go. That&rsquo;s where tilde comes in (&rdquo;~&ldquo;). Let&rsquo;s take a look at an example. In your current workspace, create a new branch and add 5 random commits.</p>
+
+<p><img src="https://shravandoda.github.io/images/git-tutorial/newworkspace2.png" alt="" /></p>
+
+<p>Now let&rsquo;s checkout HEAD to 3 commits behind master branch.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git checkout master~3</code></pre></div>
+<p><img src="https://shravandoda.github.io/images/git-tutorial/tildeexample.png" alt="" /></p>
+
+<p>Notice how I used to tilde to refer to 3 commits behind master even though I&rsquo;m on newBranch.</p>
 
       </div>
 
