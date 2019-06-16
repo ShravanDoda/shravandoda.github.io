@@ -107,7 +107,7 @@ What is a VCS? VCS stands for Version Control System." />
             </span>
             <span class="reading-time">
               <i class="fas fa-clock"></i>
-              7 minutes read
+              8 minutes read
             </span>
           </div>
           
@@ -214,6 +214,22 @@ git rebase master</code></pre></div>
 <p><img src="https://shravandoda.github.io/images/git-tutorial/tildeexample.png" alt="" /></p>
 
 <p>Notice how I used to tilde to refer to 3 commits behind master even though I&rsquo;m on newBranch.</p>
+
+<h5 id="resetting-and-reversing">Resetting and reversing</h5>
+
+<p>There are going to be times when you&rsquo;re going to have to reverse changes in Git. There are two major ways to undo a commit in Git - reset and reverse. Resetting reverts the changes by moving the branch a commit backward. Let&rsquo;s see what it looks like on our visualize-git workspace.</p>
+
+<p><img src="https://shravandoda.github.io/images/git-tutorial/prereset.png" alt="" /></p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git reset HEAD~1</code></pre></div>
+<p><img src="https://shravandoda.github.io/images/git-tutorial/reset.png" alt="" /></p>
+
+<p>While resetting is a good option when you&rsquo;re working locally, reset isn&rsquo;t a good idea for remote branches that others are using. In order to reverse changes with others we&rsquo;ll use revert</p>
+
+<p><img src="https://shravandoda.github.io/images/git-tutorial/prereset.png" alt="" /></p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git revert HEAD~1</code></pre></div>
+<p><img src="https://shravandoda.github.io/images/git-tutorial/revert.png" alt="" /></p>
+
+<p>You&rsquo;ll notice that Git creates another commit which reverts to HEAD~1.</p>
 
       </div>
 
